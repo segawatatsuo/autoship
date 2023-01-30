@@ -228,15 +228,15 @@ class MokaController extends Controller
         return view('moka.result');
     }
     //ルミーズからOKが返ってきた場合
-    public function thanks()
+    public function thanks(Request $request)
     {
-        //
+        $id=$request->id;
         return view('moka.thanks');
     }
     //ルミーズからNGが返ってきた場合
-    public function ng()
+    public function ng(Request $request)
     {
-        //
+        $id=$request->id;
         return view('moka.ng');
     }
     /**
