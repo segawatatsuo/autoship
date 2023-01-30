@@ -34,6 +34,9 @@ Route::get('/moka/address',[App\Http\Controllers\MokaController::class, 'address
 //住所入力のバリデーションの実行
 Route::post('/moka/verify',[App\Http\Controllers\MokaController::class, 'verify'])->name('verify');
 
-//https://mokapresso.jp/subscription/result.php
-Route::get('/moka/result',[App\Http\Controllers\MokaController::class, 'result'])->name('result');
+//ルミーズから戻る先
+Route::post('/moka/result',[App\Http\Controllers\MokaController::class, 'result'])->name('result');
 
+//決済OKかNG
+Route::get('/moka/thanks',[App\Http\Controllers\MokaController::class, 'thanks'])->name('thanks');
+Route::get('/moka/ng',[App\Http\Controllers\MokaController::class, 'ng'])->name('ng');
