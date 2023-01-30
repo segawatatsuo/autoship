@@ -39,4 +39,7 @@ Route::post('/moka/result',[App\Http\Controllers\MokaController::class, 'result'
 
 //決済OKかNG
 Route::get('/moka/thanks',[App\Http\Controllers\MokaController::class, 'thanks'])->name('thanks');
+Route::post('/moka/thanks',[App\Http\Controllers\MokaController::class, 'thanks'])->name('thanks');
+
 Route::get('/moka/ng',[App\Http\Controllers\MokaController::class, 'ng'])->name('ng');
+Route::post('/moka/ng',[App\Http\Controllers\MokaController::class, 'ng'])->name('ng');
