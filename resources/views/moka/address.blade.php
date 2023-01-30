@@ -467,7 +467,7 @@
                                 <span class="text-danger">{{ $errors->first('message') }}</span>
                             @endif
                         </div>
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-primary" type="submit">確認画面</button>
                     </form>
                 </div>
 

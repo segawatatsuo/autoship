@@ -197,7 +197,7 @@ class MokaController extends Controller
         $YYYYMMDD = $request['YYYYMMDD'];
         $AC_INTERVAL = $request['X-AC_INTERVAL'];
         $CARDBRAND = $request['X-CARDBRAND'];
-
+        //ルミーズの結果をDBに保存
         $order = remise::create([
             'X-TRANID' => $TRANID,
             'X-S_TORIHIKI_NO' => $TORIHIKI_NO,
@@ -226,6 +226,18 @@ class MokaController extends Controller
         ]);
 
         return view('moka.result');
+    }
+    //ルミーズからOKが返ってきた場合
+    public function thanks()
+    {
+        //
+        return view('moka.thanks');
+    }
+    //ルミーズからNGが返ってきた場合
+    public function ng()
+    {
+        //
+        return view('moka.ng');
     }
     /**
      * Show the form for creating a new resource.
