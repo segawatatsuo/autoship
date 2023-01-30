@@ -13,9 +13,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'result',
-        'thanks',
-        'ng'
+        'moka/result',
+        'moka/thanks',
+        'moka/ng'
 
     ];
 }
