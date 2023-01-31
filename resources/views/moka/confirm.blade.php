@@ -278,10 +278,30 @@
                 <header class="page-header">
                     <h1 class="page-title">モカプレッソ定期購入</h1>
                     <div class="taxonomy-description">
-                        <p>ローストされたアーモンドと蜂蜜ような心地良いフルーティーなノートを披露する中米のアラビカ種と、香ばしい香りと強い苦みの東アフリカ・ロブスタ種の絶妙なブレンドです。<br />
-                            【コーヒー豆の産地】<br />
-                            (アラビカ種) ブラジル:30%,パプアニューギニア:30%<br />
-                            (ロブスタ種) ウガンダ:20%,インドネシア:20% </p>
+                        <p>
+                            @foreach ( session()->get('items') as $key => $val )
+                            {{ $key }}
+                            {{ $val }}個
+                            <br>
+                            @endforeach
+            
+                            税抜価格：{{ number_format(session()->get('total_price') /1.08) }}円<br>
+                            消費税：{{ number_format(session()->get('total_price') - session()->get('total_price') /1.08) }}円<br>
+                            合計金額：{{ number_format(session()->get('total_price')) }}円
+            
+                            
+                            <?php
+                            if ($validated['interval'] == "毎月1回") {
+                                $interval = "1M";
+                                $nextday = date('Ym01', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
+                            } else {
+                                $interval = "2M";
+                                $nextday = date('Ym01', mktime(0, 0, 0, date('n') + 2, 1, date('Y')));
+                            }
+                            ?>
+
+                        
+                        </p>
                     </div>
                 </header><!-- .page-header -->
 
@@ -289,55 +309,55 @@
                 <div>
                     <table>
                         <tr>
-                            <td>email</td>
+                            <td>メール</td>
                             <td>{{ $validated['email'] }}</td>
                         </tr>
                         <tr>
-                            <td>name</td>
+                            <td>名前</td>
                             <td>{{ $validated['name'] }}</td>
                         </tr>
 
                         <tr>
-                            <td>kana</td>
+                            <td>名前カナ</td>
                             <td>{{ $validated['kana'] }}</td>
                         </tr>
 
                         <tr>
-                            <td>tel</td>
+                            <td>電話</td>
                             <td>{{ $validated['tel'] }}</td>
                         </tr>
                         <tr>
-                            <td>postal</td>
+                            <td>郵便</td>
                             <td>{{ $validated['postal'] }}</td>
                         </tr>
 
                         <tr>
-                            <td>prefecture</td>
+                            <td>都道府県</td>
                             <td>{{ $validated['prefecture'] }}</td>
                         </tr>
 
                         <tr>
-                            <td>city</td>
+                            <td>市区町村</td>
                             <td>{{ $validated['city'] }}</td>
                         </tr>
                         <tr>
-                            <td>city2</td>
+                            <td>番地</td>
                             <td>{{ $validated['street'] }}</td>
                         </tr>
                         <tr>
-                            <td>kankaku</td>
+                            <td>お届け間隔</td>
                             <td>{{ $validated['interval'] }}</td>
                         </tr>
                         <tr>
-                            <td>week</td>
+                            <td>第何週</td>
                             <td>{{ $validated['week'] }}</td>
                         </tr>
                         <tr>
-                            <td>youbi</td>
+                            <td>何曜日</td>
                             <td>{{ $validated['youbi'] }}</td>
                         </tr>
                         <tr>
-                            <td>message</td>
+                            <td>メッセージ</td>
                             <td>{{ $validated['message'] }}</td>
                         </tr>
                     </table>
@@ -346,25 +366,7 @@
 
 
 
-                @foreach ( session()->get('items') as $key => $val )
-                {{ $key }}
-                {{ $val }}
-                @endforeach
 
-                {{ session()->get('total_price') /1.08 }}
-                {{ session()->get('total_price') - session()->get('total_price') /1.08 }}
-                {{ session()->get('total_price') }}
-
-
-                <?php
-                if ($validated['interval'] == "毎月1回") {
-                    $interval = "1M";
-                    $nextday = date('Ym01', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
-                } else {
-                    $interval = "2M";
-                    $nextday = date('Ym01', mktime(0, 0, 0, date('n') + 2, 1, date('Y')));
-                }
-                ?>
 
                 <!--ルミーズ決済画面へ shift-jis-->
                 <form name="form1" method="post" action="https://test.remise.jp/rpgw2/pc/card/paycard.aspx" accept-charset="shift_jis">
@@ -383,7 +385,7 @@
                     <input type="hidden" name="TOTAL" value="<?php echo session()->get('total_price'); ?>">
 
                     <input type="hidden" name="METHOD" value="">
-                    <input type="hidden" name="RETURL" value="https://lookingfor.jp/autoship/moka/thanks?id={{ $order_number }}">
+                    <input type="hidden" name="RETURL" value="https://lookingfor.jp/autoship/moka/thanks">
                     <input type="hidden" name="DIRECT" value="OFF">
                     <input type="hidden" name="NG_RETURL" value="https://lookingfor.jp/autoship/moka/ng?id={{ $order_number }}">
                     <input type="hidden" name="AUTOCHARGE" value="1">
@@ -397,7 +399,7 @@
 
                     <input type="hidden" name="AC_NEXT_DATE" value="{{ $nextday }}">
                     <input type="hidden" name="AC_INTERVAL" value="{{ $interval }}">
-
+                    <br>
                     <input type="submit" value="カード決済画面へ" onclick="document.charset='shift_jis';">
                 </form>
 

@@ -319,10 +319,7 @@
                 <header class="page-header">
                     <h1 class="page-title">モカプレッソ定期購入</h1>
                     <div class="taxonomy-description">
-                        <p>ローストされたアーモンドと蜂蜜ような心地良いフルーティーなノートを披露する中米のアラビカ種と、香ばしい香りと強い苦みの東アフリカ・ロブスタ種の絶妙なブレンドです。<br />
-                            【コーヒー豆の産地】<br />
-                            (アラビカ種) ブラジル:30%,パプアニューギニア:30%<br />
-                            (ロブスタ種) ウガンダ:20%,インドネシア:20% </p>
+                        <p>ご住所等を入力してください</p>
                     </div>
                 </header><!-- .page-header -->
 
@@ -332,7 +329,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="email">email:</label>
+                            <label for="email">メール</label>
                             <input type="text" name="email" id="email" class="form-control"
                                 value="{{ old('email') }}">
                             @if ($errors->has('email'))
@@ -341,7 +338,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">email確認:</label>
+                            <label for="email">メール確認</label>
                             <input type="text" name="email_confirmation" id="email_confirmation"
                                 class="form-control" value="{{ old('email_confirmation') }}">
                             @if ($errors->has('email_confirmation'))
@@ -351,7 +348,7 @@
 
 
                         <div class="form-group">
-                            <label for="name">名前:</label>
+                            <label for="name">名前</label>
                             <input type="text" name="name" id="name" class="form-control"
                                 value="{{ old('name') }}">
                             @if ($errors->has('name'))
@@ -360,7 +357,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="kana">名前カナ:</label>
+                            <label for="kana">名前カナ</label>
                             <input type="text" name="kana" id="kana" class="form-control"
                                 value="{{ old('kana') }}" />
                             @if ($errors->has('kana'))
@@ -369,7 +366,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tel">電話番号:</label>
+                            <label for="tel">電話番号</label>
                             <input type="text" name="tel" id="tel" class="form-control"
                                 value="{{ old('tel') }}" />
                             @if ($errors->has('tel'))
@@ -378,7 +375,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="postal">郵便番号:</label>
+                            <label for="postal">郵便番号</label>
                             <input type="text" name="postal" id="postal" class="form-control"
                                 onKeyUp="AjaxZip3.zip2addr(this, '', 'prefecture', 'city');"
                                 value="{{ old('postal') }}">
@@ -389,7 +386,7 @@
 
 
                         <div class="form-group">
-                            <label for="prefecture">都道府県:</label>
+                            <label for="prefecture">都道府県</label>
                             <input type="text" name="prefecture" id="prefecture" class="form-control"
                                 value="{{ old('prefecture') }}" />
                             @if ($errors->has('prefecture'))
@@ -398,7 +395,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="city">住所:</label>
+                            <label for="city">市区町村</label>
                             <input type="text" name="city" id="city" class="form-control"
                                 value="{{ old('city') }}" />
                             @if ($errors->has('city'))
@@ -408,7 +405,7 @@
 
 
                         <div class="form-group">
-                            <label for="street">住所2:</label>
+                            <label for="street">番地</label>
                             <input type="text" name="street" id="street" class="form-control"
                                 value="{{ old('street') }}" />
                             @if ($errors->has('street'))
@@ -418,7 +415,7 @@
 
 
                         <div class="form-group">
-                            <label for="interval">お届け間隔:</label>
+                            <label for="interval">お届け間隔</label>
                             <select name="interval" id="interval" class="form-control"
                                 value="{{ old('interval') }}">
                                 <option value="毎月1回">毎月1回</option>
@@ -431,7 +428,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="week">第何週:</label>
+                            <label for="week">第何週</label>
                             <select name="week" id="week" class="form-control" value="{{ old('week') }}">
                                 <option value="第一週">第一週</option>
                                 <option value="第二週">第二週</option>
@@ -445,7 +442,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="youbi">何曜日:</label>
+                            <label for="youbi">何曜日</label>
                             <select name="youbi" id="youbi" class="form-control" value="{{ old('youbi') }}">
                                 <option value="月曜日">月曜日</option>
                                 <option value="火曜日">火曜日</option>
@@ -461,7 +458,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="message">メッセージ:</label>
+                            <label for="message">メッセージ</label>
                             <textarea name="message" id="message" class="form-control">{{ old('message') }}</textarea>
                             @if ($errors->has('message'))
                                 <span class="text-danger">{{ $errors->first('message') }}</span>

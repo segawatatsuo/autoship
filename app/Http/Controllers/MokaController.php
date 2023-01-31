@@ -14,6 +14,8 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Remise;
 
+use Mail;
+
 class MokaController extends Controller
 {
     /**
@@ -173,6 +175,7 @@ class MokaController extends Controller
     public function result(Request $request)
     {
         //ルミーズからPOSTされてくる
+        /*
         $TRANID = $request['X-TRANID'];
         $TORIHIKI_NO = $request['X-S_TORIHIKI_NO'];
         $AMOUNT = $request['X-AMOUNT'];
@@ -197,6 +200,42 @@ class MokaController extends Controller
         $YYYYMMDD = $request['YYYYMMDD'];
         $AC_INTERVAL = $request['X-AC_INTERVAL'];
         $CARDBRAND = $request['X-CARDBRAND'];
+        */
+
+        $TRANID = $request->input('X-TRANID');
+        $TORIHIKI_NO = $request->input('X-S_TORIHIKI_NO');
+        $AMOUNT = $request->input('X-AMOUNT');
+        $TAX = $request->input('X-TAX');
+        $TOTAL = $request->input('X-TOTAL');
+        $REFAPPROVED = $request->input('X-REFAPPROVED');
+        $TRANID = $request->input('X-TRANID');
+        $TORIHIKI_NO = $request->input('X-S_TORIHIKI_NO');
+        $AMOUNT = $request->input('X-AMOUNT');
+        $TAX = $request->input('X-TAX');
+        $TOTAL = $request->input('X-TOTAL');
+        $REFAPPROVED = $request->input('X-REFAPPROVED');
+        $REFFORWARDED = $request->input('X-REFFORWARDED');
+        $ERRCODE = $request->input('X-ERRCODE');
+        $ERRINFO = $request->input('X-ERRINFO');
+        $ERRLEVEL = $request->input('X-ERRLEVEL');
+        $CODE = $request->input('X-R_CODE');
+        $TYPE = $request->input('REC_TYPE');
+        $REFGATEWAYNO = $request->input('X-REFGATEWAYNO');
+        $PAYQUICKID = $request->input('X-PAYQUICKID');
+        $PARTOFCARD = $request->input('X-PARTOFCARD');
+        $EXPIRE = $request->input('X-EXPIRE');
+        $NAME = $request->input('X-NAME');
+        $MEMBERID = $request->input('X-AC_MEMBERID');
+        $KAIIN_NO = $request->input('X-AC_S_KAIIN_NO');
+        $AC_AMOUNT = $request->input('X-AC_AMOUNT');
+        $AC_TOTAL = $request->input('X-AC_TOTAL');
+        $YYYYMMDD = $request->input('YYYYMMDD');
+        $AC_INTERVAL = $request->input('X-AC_INTERVAL');
+        $CARDBRAND = $request->input('X-CARDBRAND');
+
+
+
+
         //ルミーズの結果をDBに保存
         $order = remise::create([
             'X-TRANID' => $TRANID,
@@ -228,9 +267,35 @@ class MokaController extends Controller
         return view('moka.result');
     }
     //ルミーズからOKが返ってきた場合
-    public function thanks(Request $request)
+    public function thanks( Request $request )
     {
         $id=$request->id;
+        //顧客とネクストエンジンにメールを出す
+        $customer=Order::where( 'order_number', $id )->first();
+        $email=$customer->email;
+        $name=$customer->name;
+        $tel=$customer->tel;
+        $postal=$customer->postal;
+        $prefecture=$customer->prefecture;
+        $city=$customer->city;
+        $street=$customer->street;
+        $interval=$customer->interval;
+        $week=$customer->week;
+        $youbi=$customer->youbi;
+        $message=$customer->message;
+
+        $detail=OrderDetail::where( 'order_number', $id )->get();
+        foreach($detail as $d){
+            echo $d["item_name"];
+            echo $d["amount"];
+        }
+
+
+
+
+
+
+        
         return view('moka.thanks');
     }
     //ルミーズからNGが返ってきた場合
