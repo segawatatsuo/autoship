@@ -285,16 +285,10 @@ class MokaController extends Controller
         $message=$customer->message;
 
         $detail=OrderDetail::where( 'order_number', $id )->get();
-        foreach($detail as $d){
-            echo $d["item_name"];
-            echo $d["amount"];
-        }
-
-
-
-
-
-
+        //foreach($detail as $d){
+            //echo $d["item_name"];
+            //echo $d["amount"];
+        //}
         
         return view('moka.thanks');
     }
