@@ -385,9 +385,9 @@
                     <input type="hidden" name="TOTAL" value="<?php echo session()->get('total_price'); ?>">
 
                     <input type="hidden" name="METHOD" value="">
-                    <input type="hidden" name="RETURL" value="https://lookingfor.jp/autoship/moka/thanks">
+                    <input type="hidden" name="RETURL" value="https://mokapresso.jp/autoship/moka/thanks={{ $order_number }}">
                     <input type="hidden" name="DIRECT" value="OFF">
-                    <input type="hidden" name="NG_RETURL" value="https://lookingfor.jp/autoship/moka/ng?id={{ $order_number }}">
+                    <input type="hidden" name="NG_RETURL" value="https://mokapresso.jp/autoship/moka/ng?id={{ $order_number }}">
                     <input type="hidden" name="AUTOCHARGE" value="1">
 
                     <input type="hidden" name="AC_KANA" value="{{ $validated['kana'] }}">
