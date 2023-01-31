@@ -19,8 +19,6 @@
     <script type="text/javascript" src="https://mokapresso.jp/wp-content/themes/welcart_basic-moka/js/footerFixed.js">
     </script>
 
-
-
     <title>定期購入 | モカプレッソ MOKAPRESSO公式 | ボタンひとつで本格カプセルコーヒー</title>
 
 
