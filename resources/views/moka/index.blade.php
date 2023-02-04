@@ -352,7 +352,7 @@
                                         sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
-                            <div class="itemprice">\648<em class="tax">（税込）</em></div>
+                            <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=870" rel="bookmark">アマルフィ／AMALFI　（10カプセル入り）</a>
                             </div>
                             <div class="itemname">数量：<input type="text" name="input1" id="input1"
@@ -371,7 +371,7 @@
                                         sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
-                            <div class="itemprice">\648<em class="tax">（税込）</em></div>
+                            <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=655" rel="bookmark">コジモ／COSIMO　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="text" name="input2"
                                     value="{{ old('input2') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
@@ -389,7 +389,7 @@
                                         sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
-                            <div class="itemprice">\648<em class="tax">（税込）</em></div>
+                            <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=653" rel="bookmark">ロッソ／ROSSO　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="text" name="input3"
                                     value="{{ old('input3') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
@@ -407,7 +407,7 @@
                                         sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
-                            <div class="itemprice">\648<em class="tax">（税込）</em></div>
+                            <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=654" rel="bookmark">ヴィオラ／VIOLA　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="text" name="input4"
                                     value="{{ old('input4') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
@@ -426,7 +426,7 @@
                                         sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
-                            <div class="itemprice">\648<em class="tax">（税込）</em></div>
+                            <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">ヴェルナッツア／VERNAZZA　（10カプセル入り）</a>
                             </div>
                             <div class="">数量：<input type="text" name="input5" value="{{ old('input5') }}"
@@ -434,11 +434,49 @@
 
                         </article>
 
+
+                        <article id="post-656"
+                        class="post-656 post type-post status-publish format-standard category-amalfi">
+
+                        <div class="itemimg">
+                            <a href="https://mokapresso.jp/?p=650"><img width="300" height="300" 
+                                src="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg" 
+                                class="attachment-300x300 size-300x300" alt="moka-5assort-20" loading="lazy" 
+                                srcset="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 500w, 
+                                https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 800w, 
+                                https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 768w, 
+                                https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+                            </div>
+
+
+                        <div class="itemprice">¥3240<em class="tax">（税込）</em></div>
+                        <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">5種セット（10カプセル入り×５本）</a>
+                        </div>
+                        <div class="">数量：<input type="text" name="input6" value="{{ old('input6') }}"
+                                onKeyup="calc()" style="width:50%;height:50%"></div>
+
+                    </article>
+
+
+
+
+
                     </div><!-- .cat-il -->
+
+
+
+
+
+
+
+
+
+
+
 
                     <div class="float-right">
                         <div class="form-group">
-                            <label for="result" class="col-form-label">合計数：</label>
+                            <label for="result" class="col-form-label">合計本数：</label>
                             <input type="text" id="result" name="result" value="0" readonly
                                 class="float-right">
                         </div>
@@ -680,15 +718,28 @@
             const input3 = document.querySelector("input[name=input3]");
             const input4 = document.querySelector("input[name=input4]");
             const input5 = document.querySelector("input[name=input5]");
+            const input6 = document.querySelector("input[name=input6]");
 
             const result = document.querySelector("input[name=result]");
             const amount = document.querySelector("input[name=amount]");
 
             result.value = Number(input1.value) + Number(input2.value) + Number(input3.value) + Number(input4.value) +
-                Number(input5.value);
+                Number(input5.value) + Number(input6.value)*5;
 
-            var num = Number(result.value) * 648;
-            amount.value = num.toLocaleString();
+                if(Number(result.value)>=5 && Number(result.value)<=9){
+                    var price=540;
+                }else if(Number(result.value)>=10 && Number(result.value)<=14){
+                    var price=480;
+                }else if(Number(result.value)>=15 && Number(result.value)<=19){
+                    var price=450;
+                }else if(Number(result.value)>=20){
+                    var price=400;
+                }else{
+                    var price=600;
+                }
+
+                var num = Number(result.value) * price*1.08;
+                amount.value = Math.floor(num).toLocaleString();
 
 
         }

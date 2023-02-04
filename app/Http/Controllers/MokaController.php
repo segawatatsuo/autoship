@@ -55,7 +55,22 @@ class MokaController extends Controller
             $items["ヴェルナッツア／VERNAZZA（10カプセル入り）"] = $input5;
         }
 
-        $total_price = $sum * 648;
+        //定価
+        $price=600;
+
+        if( $sum>=5 and $sum <=9 ){
+            $price=$price*540;
+        }elseif($sum>=10 and $sum <=14){
+            $price=$price*480;
+        }elseif($sum>=15 and $sum <=19){
+            $price=$price*450;
+        }elseif($sum>=20){
+            $price=$price*400;
+        }else{
+            $price=$price*600;
+        }
+
+        $total_price = $sum * $price;
         session(['items' => $items]);
         session(['total_price' => $total_price]);
         
