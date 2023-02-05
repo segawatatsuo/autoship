@@ -39,7 +39,7 @@ class MokaController extends Controller
         $input5 = $request->input('input5');
         $input6 = $request->input('input6');
 
-        $sum = intval($input1) + intval($input2) + intval($input3) + intval($input4) + intval($input5) + intval($input6)*5;
+        $sum = intval($input1) + intval($input2) + intval($input3) + intval($input4) + intval($input5) + intval($input6*5);
 
         if ($input1 >= 1) {
             $items['アマルフィ／AMALFI（10カプセル入り）'] = $input1;
