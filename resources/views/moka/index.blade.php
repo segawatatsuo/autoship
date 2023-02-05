@@ -111,6 +111,17 @@
             padding: 0 !important;
         }
     </style>
+
+<!--input type="number"のスピンボタン（上下の矢印ボタン）をCSSで非表示にする -->
+<style type="text/css">
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+    -moz-appearance:textfield !important;
+}
+</style>
+
     <link rel='stylesheet' id='wp-block-library-css'
         href='https://mokapresso.jp/wp-includes/css/dist/block-library/style.min.css?ver=5.5' type='text/css'
         media='all' />
@@ -355,7 +366,7 @@
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=870" rel="bookmark">アマルフィ／AMALFI　（10カプセル入り）</a>
                             </div>
-                            <div class="itemname">数量：<input type="text" name="input1" id="input1"
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input1" id="input1"
                                     value="{{ old('input1') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
@@ -373,7 +384,7 @@
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=655" rel="bookmark">コジモ／COSIMO　（10カプセル入り）</a></div>
-                            <div class="itemname">数量：<input type="text" name="input2"
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input2"
                                     value="{{ old('input2') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
@@ -391,7 +402,7 @@
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=653" rel="bookmark">ロッソ／ROSSO　（10カプセル入り）</a></div>
-                            <div class="itemname">数量：<input type="text" name="input3"
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input3"
                                     value="{{ old('input3') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
@@ -409,7 +420,7 @@
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=654" rel="bookmark">ヴィオラ／VIOLA　（10カプセル入り）</a></div>
-                            <div class="itemname">数量：<input type="text" name="input4"
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input4"
                                     value="{{ old('input4') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
@@ -429,7 +440,7 @@
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">ヴェルナッツア／VERNAZZA　（10カプセル入り）</a>
                             </div>
-                            <div class="">数量：<input type="text" name="input5" value="{{ old('input5') }}"
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input5" value="{{ old('input5') }}"
                                     onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
@@ -452,7 +463,7 @@
                         <div class="itemprice">¥3240<em class="tax">（税込）</em></div>
                         <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">5種セット（10カプセル入り×５本）</a>
                         </div>
-                        <div class="">数量：<input type="text" name="input6" value="{{ old('input6') }}"
+                        <div class="itemname">数量：<input type="number" name="input6" class="no-spin" value="{{ old('input6') }}"
                                 onKeyup="calc()" style="width:50%;height:50%"></div>
 
                     </article>
@@ -723,25 +734,26 @@
             const result = document.querySelector("input[name=result]");
             const amount = document.querySelector("input[name=amount]");
 
+            //input6だけ5個セット
             result.value = Number(input1.value) + Number(input2.value) + Number(input3.value) + Number(input4.value) +
                 Number(input5.value) + Number(input6.value)*5;
 
-                if(Number(result.value)>=5 && Number(result.value)<=9){
+            //数量で単価を変更
+            if(Number(result.value)>=5 && Number(result.value)<=9){
                     var price=540;
-                }else if(Number(result.value)>=10 && Number(result.value)<=14){
+            }else if(Number(result.value)>=10 && Number(result.value)<=14){
                     var price=480;
-                }else if(Number(result.value)>=15 && Number(result.value)<=19){
+            }else if(Number(result.value)>=15 && Number(result.value)<=19){
                     var price=450;
-                }else if(Number(result.value)>=20){
+            }else if(Number(result.value)>=20){
                     var price=400;
-                }else{
+            }else{
                     var price=600;
-                }
+            }
 
-                var num = Number(result.value) * price*1.08;
-                amount.value = Math.floor(num).toLocaleString();
+            var num = Number(result.value) * price*1.08;
 
-
+            amount.value = Math.floor(num).toLocaleString();
         }
     </script>
 

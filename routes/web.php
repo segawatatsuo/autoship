@@ -34,7 +34,7 @@ Route::get('/moka/address',[App\Http\Controllers\MokaController::class, 'address
 //住所入力のバリデーションの実行
 Route::post('/moka/verify',[App\Http\Controllers\MokaController::class, 'verify'])->name('verify');
 
-//ルミーズから戻る先
+//ルミーズから戻る先 800を返す
 Route::post('/moka/result',[App\Http\Controllers\MokaController::class, 'result'])->name('result');
 
 //決済OKかNG

@@ -37,7 +37,9 @@ class MokaController extends Controller
         $input3 = $request->input('input3');
         $input4 = $request->input('input4');
         $input5 = $request->input('input5');
-        $sum = intval($input1) + intval($input2) + intval($input3) + intval($input4) + intval($input5);
+        $input6 = $request->input('input6');
+
+        $sum = intval($input1) + intval($input2) + intval($input3) + intval($input4) + intval($input5) + intval($input6)*5;
 
         if ($input1 >= 1) {
             $items['アマルフィ／AMALFI（10カプセル入り）'] = $input1;
@@ -54,26 +56,31 @@ class MokaController extends Controller
         if ($input5 >= 1) {
             $items["ヴェルナッツア／VERNAZZA（10カプセル入り）"] = $input5;
         }
+        if ($input6 >= 1) {
+            $items["5種セット（10カプセル入り×５本）"] = $input6;
+        }
 
         //定価
         $price=600;
 
         if( $sum>=5 and $sum <=9 ){
-            $price=$price*540;
+            $price=540;
         }elseif($sum>=10 and $sum <=14){
-            $price=$price*480;
+            $price=480;
         }elseif($sum>=15 and $sum <=19){
-            $price=$price*450;
+            $price=450;
         }elseif($sum>=20){
-            $price=$price*400;
+            $price=400;
         }else{
-            $price=$price*600;
+            $price=600;
         }
 
-        $total_price = $sum * $price;
+        $total_price = floor( $sum * $price * 1.08 );
+        //上記計算で小数点がつくので整数に変換
+        $total_price = intval($total_price);
         session(['items' => $items]);
         session(['total_price' => $total_price]);
-        
+       
 
         if ($sum < 5) {
             return redirect()->route('moka')->with(['message' => '合計5個以上からお願いいたします。'])->withInput();
@@ -151,6 +158,7 @@ class MokaController extends Controller
         $message=$validated['message'];
         $shipping=0;
         $tax=session()->get('total_price') - session()->get('total_price') /1.08;
+        $tax=intval($tax);
         $total=session()->get('total_price');
         $subtotal=$total-$tax;
         $order = order::create([
@@ -186,37 +194,10 @@ class MokaController extends Controller
         return view('moka.confirm', compact('validated','order_number'));
     }
 
-    //ルミーズの結果通知を受取るページ
+    //ルミーズの結果通知を受取り800をルミーズへ戻す
     public function result(Request $request)
     {
         //ルミーズからPOSTされてくる
-        /*
-        $TRANID = $request['X-TRANID'];
-        $TORIHIKI_NO = $request['X-S_TORIHIKI_NO'];
-        $AMOUNT = $request['X-AMOUNT'];
-        $TAX = $request['X-TAX'];
-        $TOTAL = $request['X-TOTAL'];
-        $REFAPPROVED = $request['X-REFAPPROVED'];
-        $REFFORWARDED = $request['X-REFFORWARDED'];
-        $ERRCODE = $request['X-ERRCODE'];
-        $ERRINFO = $request['X-ERRINFO'];
-        $ERRLEVEL = $request['X-ERRLEVEL'];
-        $CODE = $request['X-R_CODE'];
-        $TYPE = $request['REC_TYPE'];
-        $REFGATEWAYNO = $request['X-REFGATEWAYNO'];
-        $PAYQUICKID = $request['X-PAYQUICKID'];
-        $PARTOFCARD = $request['X-PARTOFCARD'];
-        $EXPIRE = $request['X-EXPIRE'];
-        $NAME = $request['X-NAME'];
-        $MEMBERID = $request['X-AC_MEMBERID'];
-        $KAIIN_NO = $request['X-AC_S_KAIIN_NO'];
-        $AC_AMOUNT = $request['X-AC_AMOUNT'];
-        $AC_TOTAL = $request['X-AC_TOTAL'];
-        $YYYYMMDD = $request['YYYYMMDD'];
-        $AC_INTERVAL = $request['X-AC_INTERVAL'];
-        $CARDBRAND = $request['X-CARDBRAND'];
-        */
-
         $TRANID = $request->input('X-TRANID');
         $TORIHIKI_NO = $request->input('X-S_TORIHIKI_NO');
         $AMOUNT = $request->input('X-AMOUNT');
@@ -247,9 +228,6 @@ class MokaController extends Controller
         $YYYYMMDD = $request->input('YYYYMMDD');
         $AC_INTERVAL = $request->input('X-AC_INTERVAL');
         $CARDBRAND = $request->input('X-CARDBRAND');
-
-
-
 
         //ルミーズの結果をDBに保存
         $order = remise::create([

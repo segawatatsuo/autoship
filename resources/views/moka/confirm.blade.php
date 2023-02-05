@@ -380,8 +380,8 @@
                     <input type="hidden" name="MAIL" value="{{ $validated['email'] }}">
                     <input type="hidden" name="ITEM" value="0000990">
 
-                    <input type="hidden" name="AMOUNT" value="<?php echo session()->get('total_price') / 1.08;  ?>">
-                    <input type="hidden" name="TAX" value="<?php echo session()->get('total_price') - session()->get('total_price') / 1.08;  ?>">
+                    <input type="hidden" name="AMOUNT" value="<?php echo floor( session()->get('total_price') / 1.08 ) ;  ?>">
+                    <input type="hidden" name="TAX" value="<?php echo floor( session()->get('total_price')) - floor( session()->get('total_price') / 1.08 ) ;  ?>">
                     <input type="hidden" name="TOTAL" value="<?php echo session()->get('total_price'); ?>">
 
                     <input type="hidden" name="METHOD" value="">
@@ -393,8 +393,8 @@
                     <input type="hidden" name="AC_KANA" value="{{ $validated['kana'] }}">
                     <input type="hidden" name="AC_TEL" value="{{ $validated['tel'] }}">
 
-                    <input type="hidden" name="AC_AMOUNT" value="<?php echo session()->get('total_price') / 1.08;  ?>">
-                    <input type="hidden" name="AC_TAX" value="<?php echo session()->get('total_price') - session()->get('total_price') / 1.08;  ?>">
+                    <input type="hidden" name="AC_AMOUNT" value="<?php echo floor(session()->get('total_price') / 1.08 );  ?>">
+                    <input type="hidden" name="AC_TAX" value="<?php echo floor( session()->get('total_price')) - floor(session()->get('total_price') / 1.08 );  ?>">
                     <input type="hidden" name="AC_TOTAL" value="<?php echo session()->get('total_price'); ?>">
 
                     <input type="hidden" name="AC_NEXT_DATE" value="{{ $nextday }}">
