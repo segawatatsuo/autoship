@@ -13,7 +13,7 @@ use App\Rules\KatakanaRule;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Remise;
-
+use App\Mail\ThanksMail;
 use Mail;
 
 class MokaController extends Controller
@@ -282,8 +282,42 @@ class MokaController extends Controller
             //echo $d["item_name"];
             //echo $d["amount"];
         //}
+
+        //お客様にメール
+        $content=$name."様\n\n定期購入のお申し込みありがとうございます。モカプレッソです。\n";
+        $content.="下記の通りご注文を承りました。\n\n";
+        $content.="■お名前\n";
+        $content.=$name."\n\n";
+        $content.="■郵便番号\n";
+        $content.='〒'.$postal."\n";
+        $content.="■ご住所\n";
+        $content.=$prefecture.$city.$street."\n";
+        $content.="■お電話\n";
+        $content.=$tel."\n\n";
+        $content.="■2回目以降のお届け間隔\n";
+        $content.=$interval.' '.$week.' '.$youbi."\n\n";
+        $content.="■お届け商品\n";
+        foreach($detail as $d){
+            $content.=$d["item_name"]." × ";
+            $content.=$d["amount"];
+            $content.="\n";
+        }
+        $content.="\n";
+        $content.="第一回目の発送はご注文日の翌営業日となります。\n";
+        $content.="ご不明な点などございましたらお気軽にお問い合わせください。\n";
+        $content.="今後ともよろしくお願い申し上げます。\n\n";
+        $content.="----------------------------------------------------\n";
+        $content.="株式会社ディーキャスト\n";
+        $content.="〒116-0001 東京都荒川区町屋7-13-12\n";
+        $content.="Phone：080-2233-7776\n";
+        $content.="Fax：03-6240-8066\n";
+        $content.="Email：info@mokapresso.jp\n";
+        $content.="----------------------------------------------------\n";
+
+        $to =$email;
+	    Mail::to($to)->send(new ThanksMail($content));
         
-        return view('moka.thanks');
+        return view('moka.thanks',compact('name'));
     }
     //ルミーズからNGが返ってきた場合
     public function ng(Request $request)

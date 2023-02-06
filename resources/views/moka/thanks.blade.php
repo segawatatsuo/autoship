@@ -273,13 +273,17 @@
                 @endif
 
                 <header class="page-header">
-                    <h1 class="page-title">定期購入ありがとうございます</h1>
+                    <h1 class="page-title">定期購入お申し込みありがとうございます</h1>
                     <div>
-                        <h2>カード承認OK</h2>
+                        <h2>{{ $name }}様</h2><br>
+                        <p>
+                            ご注文ありがとうございます。<br>
+                            メールをお送りいたしました。<br>
+                            ご確認ください。よろしくお願い申し上げます。
+                        </p>
                     </div>
                     <div class="taxonomy-description">
                         <p>
-
                             <br><br><br><br><br><br><br><br><br><br><br>
                         </p>
                     </div>
