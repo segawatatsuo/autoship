@@ -352,11 +352,34 @@
                                 <li>・2回目以降は月初1日にご注文確定となります。</li>
                                 <li>・5本以上送料無料ですが、4本以下の場合は送料660円が発生いたします。</li>
                                 <li>・初回を含め3回以上のご継続をお約束いただきます。</li>
-                                <li>・3回目の商品をお受け取り完了後はお客様のペースに合わせて、いつでも周期変更、休止、再開などのお手続きが可能です。 ※前月末日までに弊社までご連絡下さい。</li>
+                                <li>・3回目の商品をお受け取り完了後はお客様のペースに合わせて、いつでも周期変更、休止、再開などのお手続きが可能です。 <br>※前月末日までに弊社までご連絡下さい。</li>
                                 
                                 </ul>
                                 
                             </p>
+                    </div>
+                    <br>
+                    <div class="taxonomy-description">
+                        <table>
+                            <tr>
+                                <td colspan="3"><h2>本数が多いほどお得です</h2></td>
+                            </tr>
+                            <tr>
+                                <td>1〜4本</td><td>単価600円</td><td> </td>
+                            </tr>
+                            <tr>
+                                <td>5〜9本</td><td>単価540円</td><td style="color:brown">(10%OFF)</td>
+                            </tr>
+                            <tr>
+                                <td>10〜14本</td><td>単価480円</td><td style="color:brown">(20%OFF)</td>
+                            </tr>
+                            <tr>
+                                <td>15〜19本</td><td>単価450円</td><td style="color:brown">(25%OFF)</td>
+                            </tr>
+                            <tr>
+                                <td>20本以上</td><td>単価400円</td><td style="color:brown">(34%OFF)</td>
+                            </tr>
+                        </table>
                     </div>
                 </header><!-- .page-header -->
 
