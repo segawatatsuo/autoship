@@ -359,28 +359,59 @@
                             </p>
                     </div>
                     <br>
+                    <div class="col-6 d-none d-md-block">
+                        <div class="taxonomy-description">
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td colspan="3"><h2>本数が多いほどお得です</h2></td>
+                                </tr>
+                                <tr>
+                                    <td>1〜4箱</td><td>600円/箱</td><td> </td>
+                                </tr>
+                                <tr>
+                                    <td>5〜9箱</td><td>540円/箱</td><td style="color:brown">(10%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>10〜14箱</td><td>480円/箱</td><td style="color:brown">(20%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>15〜19箱</td><td>450円/箱</td><td style="color:brown">(25%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>20箱以上</td><td>400円/箱</td><td style="color:brown">(34%OFF)</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+<div class="col-12 d-md-none">
                     <div class="taxonomy-description">
-                        <table>
+                        <table class="table table-bordered">
                             <tr>
                                 <td colspan="3"><h2>本数が多いほどお得です</h2></td>
                             </tr>
                             <tr>
-                                <td>1〜4本</td><td>単価600円</td><td> </td>
+                                <td>1〜4箱</td><td>600円/箱</td><td> </td>
                             </tr>
                             <tr>
-                                <td>5〜9本</td><td>単価540円</td><td style="color:brown">(10%OFF)</td>
+                                <td>5〜9箱</td><td>540円/箱</td><td style="color:brown">(10%OFF)</td>
                             </tr>
                             <tr>
-                                <td>10〜14本</td><td>単価480円</td><td style="color:brown">(20%OFF)</td>
+                                <td>10〜14箱</td><td>480円/箱</td><td style="color:brown">(20%OFF)</td>
                             </tr>
                             <tr>
-                                <td>15〜19本</td><td>単価450円</td><td style="color:brown">(25%OFF)</td>
+                                <td>15〜19箱</td><td>450円/箱</td><td style="color:brown">(25%OFF)</td>
                             </tr>
                             <tr>
-                                <td>20本以上</td><td>単価400円</td><td style="color:brown">(34%OFF)</td>
+                                <td>20箱以上</td><td>400円/箱</td><td style="color:brown">(34%OFF)</td>
                             </tr>
                         </table>
                     </div>
+</div>
+
                 </header><!-- .page-header -->
 
 
