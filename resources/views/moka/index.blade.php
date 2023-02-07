@@ -567,6 +567,13 @@
 
 
                     <div class="float-right">
+
+                        <div class="form-group">
+                            <label for="price1" class="col-form-label">単価：</label>
+                            <input type="text" id="price1" name="price1" value="0" readonly
+                                class="float-right">
+                        </div>
+
                         <div class="form-group">
                             <label for="result" class="col-form-label">合計本数：</label>
                             <input type="text" id="result" name="result" value="0" readonly
@@ -812,6 +819,7 @@
             const input5 = document.querySelector("input[name=input5]");
             const input6 = document.querySelector("input[name=input6]");
 
+            const price1 = document.querySelector("input[name=price1]");
             const result = document.querySelector("input[name=result]");
             const postage = document.querySelector("input[name=postage]");
             const amount = document.querySelector("input[name=amount]");
@@ -836,6 +844,7 @@
                 var ship = 660;
             }
 
+            price1.value=Math.floor(price * 1.08).toLocaleString();
             postage.value = Math.floor(ship).toLocaleString();
             var num = Number(result.value) * price * 1.08 + Number(postage.value) ;
             amount.value = Math.floor(num).toLocaleString();          

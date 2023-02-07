@@ -79,8 +79,11 @@ class MokaController extends Controller
         }
 
         $total_price = floor( $sum * $price * 1.08 ) + $postage;
+        $pricesum = $sum * $price ;
         //上記計算で小数点がつくので整数に変換
         $total_price = intval($total_price);
+        session(['pricesum' => $pricesum]);
+        session(['price' => $price]);
         session(['items' => $items]);
         session(['total_price' => $total_price]);
         session(['postage' => $postage]);
