@@ -287,6 +287,7 @@
             
                             税抜価格：{{ number_format(session()->get('total_price') /1.08) }}円<br>
                             消費税：{{ number_format(session()->get('total_price') - session()->get('total_price') /1.08) }}円<br>
+                            送料：{{ number_format(session()->get('postage')) }}円
                             合計金額：{{ number_format(session()->get('total_price')) }}円
             
                             

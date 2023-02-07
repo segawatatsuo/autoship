@@ -112,15 +112,15 @@
         }
     </style>
 
-<!--input type="number"のスピンボタン（上下の矢印ボタン）をCSSで非表示にする -->
-<style type="text/css">
-.no-spin::-webkit-inner-spin-button,
-.no-spin::-webkit-outer-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
-    -moz-appearance:textfield !important;
-}
-</style>
+    <!--input type="number"のスピンボタン（上下の矢印ボタン）をCSSで非表示にする -->
+    <style type="text/css">
+        .no-spin::-webkit-inner-spin-button,
+        .no-spin::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0 !important;
+            -moz-appearance: textfield !important;
+        }
+    </style>
 
     <link rel='stylesheet' id='wp-block-library-css'
         href='https://mokapresso.jp/wp-includes/css/dist/block-library/style.min.css?ver=5.5' type='text/css'
@@ -340,23 +340,23 @@
                     <h1 class="page-title">モカプレッソ定期購入</h1>
                     <div class="taxonomy-description">
 
-                            <p>
-                                <h2>5種類の中からお好きなカプセルの数量を入力いただきご注文下さい。</h2>
-                            </p>
-                            <br>
+                        <p>
+                        <h2>5種類の中からお好きなカプセルの数量を入力いただきご注文下さい。</h2>
+                        </p>
+                        <br>
 
-                                <p>【必ずお読み下さい】</p>
-                                <ul>
-                                <li>・１ヶ月、もしくは２ヶ月に一度、ご指定の頻度でコーヒーカプセルを定期的にお届けいたします。</li>
-                                <li>・お届けサイクルはいつでも変更可能です。</li>
-                                <li>・2回目以降は月初1日にご注文確定となります。</li>
-                                <li>・5本以上送料無料ですが、4本以下の場合は送料660円が発生いたします。</li>
-                                <li>・初回を含め3回以上のご継続をお約束いただきます。</li>
-                                <li>・3回目の商品をお受け取り完了後はお客様のペースに合わせて、いつでも周期変更、休止、再開などのお手続きが可能です。 <br>※前月末日までに弊社までご連絡下さい。</li>
-                                
-                                </ul>
-                                
-                            </p>
+                        <p>【必ずお読み下さい】</p>
+                        <ul>
+                            <li>・１ヶ月、もしくは２ヶ月に一度、ご指定の頻度でコーヒーカプセルを定期的にお届けいたします。</li>
+                            <li>・お届けサイクルはいつでも変更可能です。</li>
+                            <li>・2回目以降は月初1日にご注文確定となります。</li>
+                            <li>・5本以上送料無料ですが、4本以下の場合は送料660円が発生いたします。</li>
+                            <li>・初回を含め3回以上のご継続をお約束いただきます。</li>
+                            <li>・3回目の商品をお受け取り完了後はお客様のペースに合わせて、いつでも周期変更、休止、再開などのお手続きが可能です。 <br>※前月末日までに弊社までご連絡下さい。</li>
+
+                        </ul>
+
+                        </p>
                     </div>
                     <br>
                     <div class="col-6 d-none d-md-block">
@@ -364,22 +364,34 @@
 
                             <table class="table table-bordered">
                                 <tr>
-                                    <td colspan="3"><h2>本数が多いほどお得です</h2></td>
+                                    <td colspan="3">
+                                        <h2>本数が多いほどお得です</h2>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>1〜4箱</td><td>600円/箱</td><td> </td>
+                                    <td>1〜4箱</td>
+                                    <td>600円/箱(税別)</td>
+                                    <td> </td>
                                 </tr>
                                 <tr>
-                                    <td>5〜9箱</td><td>540円/箱</td><td style="color:brown">(10%OFF)</td>
+                                    <td>5〜9箱</td>
+                                    <td>540円/箱(税別)</td>
+                                    <td style="color:brown">(10%OFF)</td>
                                 </tr>
                                 <tr>
-                                    <td>10〜14箱</td><td>480円/箱</td><td style="color:brown">(20%OFF)</td>
+                                    <td>10〜14箱</td>
+                                    <td>480円/箱(税別)</td>
+                                    <td style="color:brown">(20%OFF)</td>
                                 </tr>
                                 <tr>
-                                    <td>15〜19箱</td><td>450円/箱</td><td style="color:brown">(25%OFF)</td>
+                                    <td>15〜19箱</td>
+                                    <td>450円/箱(税別)</td>
+                                    <td style="color:brown">(25%OFF)</td>
                                 </tr>
                                 <tr>
-                                    <td>20箱以上</td><td>400円/箱</td><td style="color:brown">(34%OFF)</td>
+                                    <td>20箱以上</td>
+                                    <td>400円/箱(税別)</td>
+                                    <td style="color:brown">(34%OFF)</td>
                                 </tr>
                             </table>
                         </div>
@@ -387,30 +399,42 @@
 
 
 
-<div class="col-12 d-md-none">
-                    <div class="taxonomy-description">
-                        <table class="table table-bordered">
-                            <tr>
-                                <td colspan="3"><h2>本数が多いほどお得です</h2></td>
-                            </tr>
-                            <tr>
-                                <td>1〜4箱</td><td>600円/箱</td><td> </td>
-                            </tr>
-                            <tr>
-                                <td>5〜9箱</td><td>540円/箱</td><td style="color:brown">(10%OFF)</td>
-                            </tr>
-                            <tr>
-                                <td>10〜14箱</td><td>480円/箱</td><td style="color:brown">(20%OFF)</td>
-                            </tr>
-                            <tr>
-                                <td>15〜19箱</td><td>450円/箱</td><td style="color:brown">(25%OFF)</td>
-                            </tr>
-                            <tr>
-                                <td>20箱以上</td><td>400円/箱</td><td style="color:brown">(34%OFF)</td>
-                            </tr>
-                        </table>
+                    <div class="col-12 d-md-none">
+                        <div class="taxonomy-description">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td colspan="3">
+                                        <h2>本数が多いほどお得です</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1〜4箱</td>
+                                    <td>600円/箱</td>
+                                    <td> </td>
+                                </tr>
+                                <tr>
+                                    <td>5〜9箱</td>
+                                    <td>540円/箱</td>
+                                    <td style="color:brown">(10%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>10〜14箱</td>
+                                    <td>480円/箱</td>
+                                    <td style="color:brown">(20%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>15〜19箱</td>
+                                    <td>450円/箱</td>
+                                    <td style="color:brown">(25%OFF)</td>
+                                </tr>
+                                <tr>
+                                    <td>20箱以上</td>
+                                    <td>400円/箱</td>
+                                    <td style="color:brown">(34%OFF)</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-</div>
 
                 </header><!-- .page-header -->
 
@@ -434,8 +458,9 @@
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=870" rel="bookmark">アマルフィ／AMALFI　（10カプセル入り）</a>
                             </div>
-                            <div class="itemname">数量：<input type="number" class="no-spin" name="input1" id="input1"
-                                    value="{{ old('input1') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input1"
+                                    id="input1" value="{{ old('input1') }}" onKeyup="calc()"
+                                    style="width:50%;height:50%"></div>
 
                         </article>
                         <article id="post-655"
@@ -508,49 +533,37 @@
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
                             <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">ヴェルナッツア／VERNAZZA　（10カプセル入り）</a>
                             </div>
-                            <div class="itemname">数量：<input type="number" class="no-spin" name="input5" value="{{ old('input5') }}"
-                                    onKeyup="calc()" style="width:50%;height:50%"></div>
+                            <div class="itemname">数量：<input type="number" class="no-spin" name="input5"
+                                    value="{{ old('input5') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
                         </article>
 
 
                         <article id="post-656"
-                        class="post-656 post type-post status-publish format-standard category-amalfi">
+                            class="post-656 post type-post status-publish format-standard category-amalfi">
 
-                        <div class="itemimg">
-                            <a href="https://mokapresso.jp/?p=650"><img width="300" height="300" 
-                                src="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg" 
-                                class="attachment-300x300 size-300x300" alt="moka-5assort-20" loading="lazy" 
-                                srcset="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 500w, 
+                            <div class="itemimg">
+                                <a href="https://mokapresso.jp/?p=650"><img width="300" height="300"
+                                        src="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg"
+                                        class="attachment-300x300 size-300x300" alt="moka-5assort-20" loading="lazy"
+                                        srcset="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 500w, 
                                 https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 800w, 
                                 https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 768w, 
-                                https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+                                https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 1000w"
+                                        sizes="(max-width: 300px) 100vw, 300px" /></a>
                             </div>
 
 
-                        <div class="itemprice">¥3240<em class="tax">（税込）</em></div>
-                        <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">5種セット（10カプセル入り×５本）</a>
-                        </div>
-                        <div class="itemname">数量：<input type="number" name="input6" class="no-spin" value="{{ old('input6') }}"
-                                onKeyup="calc()" style="width:50%;height:50%"></div>
+                            <div class="itemprice">¥3240<em class="tax">（税込）</em></div>
+                            <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">5種セット（10カプセル入り×５本）</a>
+                            </div>
+                            <div class="itemname">数量：<input type="number" name="input6" class="no-spin"
+                                    value="{{ old('input6') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
-                    </article>
-
-
-
+                        </article>
 
 
                     </div><!-- .cat-il -->
-
-
-
-
-
-
-
-
-
-
 
 
                     <div class="float-right">
@@ -561,8 +574,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="ship" class="col-form-label">送料：</label>
-                            <input type="text" id="ship" name="ship" value="無料" readonly
+                            <label for="postage" class="col-form-label">送料：</label>
+                            <input type="text" id="postage" name="postage" value="0" readonly
                                 class="float-right">
                         </div>
                         <div class="form-group">
@@ -800,28 +813,32 @@
             const input6 = document.querySelector("input[name=input6]");
 
             const result = document.querySelector("input[name=result]");
+            const postage = document.querySelector("input[name=postage]");
             const amount = document.querySelector("input[name=amount]");
 
             //input6だけ5個セット
             result.value = Number(input1.value) + Number(input2.value) + Number(input3.value) + Number(input4.value) +
-                Number(input5.value) + Number(input6.value)*5;
+                Number(input5.value) + Number(input6.value) * 5;
+
+            var ship = 0;
 
             //数量で単価を変更
-            if(Number(result.value)>=5 && Number(result.value)<=9){
-                    var price=540;
-            }else if(Number(result.value)>=10 && Number(result.value)<=14){
-                    var price=480;
-            }else if(Number(result.value)>=15 && Number(result.value)<=19){
-                    var price=450;
-            }else if(Number(result.value)>=20){
-                    var price=400;
-            }else{
-                    var price=600;
+            if (Number(result.value) >= 5 && Number(result.value) <= 9) {
+                var price = 540;
+            } else if (Number(result.value) >= 10 && Number(result.value) <= 14) {
+                var price = 480;
+            } else if (Number(result.value) >= 15 && Number(result.value) <= 19) {
+                var price = 450;
+            } else if (Number(result.value) >= 20) {
+                var price = 400;
+            } else {
+                var price = 600;
+                var ship = 660;
             }
 
-            var num = Number(result.value) * price*1.08;
-
-            amount.value = Math.floor(num).toLocaleString();
+            postage.value = Math.floor(ship).toLocaleString();
+            var num = Number(result.value) * price * 1.08 + Number(postage.value) ;
+            amount.value = Math.floor(num).toLocaleString();          
         }
     </script>
 

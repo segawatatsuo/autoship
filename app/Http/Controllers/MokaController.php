@@ -62,6 +62,8 @@ class MokaController extends Controller
 
         //定価
         $price=600;
+        //送料
+        $postage=0;
 
         if( $sum>=5 and $sum <=9 ){
             $price=540;
@@ -73,21 +75,25 @@ class MokaController extends Controller
             $price=400;
         }else{
             $price=600;
+            $postage=660;
         }
 
-        $total_price = floor( $sum * $price * 1.08 );
+        $total_price = floor( $sum * $price * 1.08 ) + $postage;
         //上記計算で小数点がつくので整数に変換
         $total_price = intval($total_price);
         session(['items' => $items]);
         session(['total_price' => $total_price]);
+        session(['postage' => $postage]);
        
-
+        /*
         if ($sum < 5) {
             return redirect()->route('moka')->with(['message' => '合計5個以上からお願いいたします。'])->withInput();
         } else {
             //5個以上なら住所入力ページへ移動
             return redirect()->route('address');
         }
+        */
+        return redirect()->route('address');
     }
 
     //住所入力ページ
@@ -156,7 +162,7 @@ class MokaController extends Controller
         $week=$validated['week'];
         $youbi=$validated['youbi'];
         $message=$validated['message'];
-        $shipping=0;
+        $shipping=session()->get('postage');
         $tax=session()->get('total_price') - session()->get('total_price') /1.08;
         $tax=intval($tax);
         $total=session()->get('total_price');
