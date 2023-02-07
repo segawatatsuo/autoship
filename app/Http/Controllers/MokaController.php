@@ -88,15 +88,14 @@ class MokaController extends Controller
         session(['total_price' => $total_price]);
         session(['postage' => $postage]);
        
-        /*
-        if ($sum < 5) {
-            return redirect()->route('moka')->with(['message' => '合計5個以上からお願いいたします。'])->withInput();
+
+        if ($sum < 1) {
+            return redirect()->route('moka')->with(['message' => '数量を入力してください'])->withInput();
         } else {
-            //5個以上なら住所入力ページへ移動
+            //1個以上なら住所入力ページへ移動
             return redirect()->route('address');
         }
-        */
-        return redirect()->route('address');
+
     }
 
     //住所入力ページ
@@ -324,7 +323,8 @@ class MokaController extends Controller
         $content.="----------------------------------------------------\n";
 
         $to =$email;
-	    Mail::to($to)->send(new ThanksMail($content));
+        $bcc="info@mokapresso.jp";
+	    Mail::to($to)->bcc($bcc)->send(new ThanksMail($content));
         
         return view('moka.thanks',compact('name'));
     }

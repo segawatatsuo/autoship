@@ -97,6 +97,7 @@
                     .wpemoji)))
         }(window, document, window._wpemojiSettings);
     </script>
+
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -330,7 +331,7 @@
 
 
                 @if (session('message'))
-                    <div class="bg-danger text-center py-3 my-0 mb-3">
+                    <div class="bg-danger text-center text-white h3 py-3 my-0 mb-3">
                         {{ session('message') }}
                     </div>
                 @endif
@@ -604,7 +605,7 @@
     </div><!-- #main -->
 
 
-    <div id="toTop" class="wrap fixed"><a href="#masthead"><i class="fa fa-chevron-circle-up"></i></a></div>
+    <!--<div id="toTop" class="wrap fixed"><a href="#masthead"><i class="fa fa-chevron-circle-up"></i></a></div>-->
 
 
 
