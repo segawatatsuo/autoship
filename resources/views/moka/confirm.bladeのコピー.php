@@ -373,8 +373,8 @@
                 <form name="form1" method="post" action="https://test.remise.jp/rpgw2/pc/card/paycard.aspx" accept-charset="shift_jis">
                     @csrf
                     <input type="hidden" name="ac_count" value="">
-                    <input type="hidden" name="SHOPCO" value="RMS63879">
-                    <input type="hidden" name="HOSTID" value="63879003">
+                    <input type="hidden" name="SHOPCO" value="RMS73615">
+                    <input type="hidden" name="HOSTID" value="73615002">
 
                     <input type="hidden" name="S_TORIHIKI_NO" value="{{ $order_number }}">
                     <input type="hidden" name="JOB" value="AUTH">
