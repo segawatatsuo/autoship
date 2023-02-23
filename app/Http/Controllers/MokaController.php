@@ -115,7 +115,7 @@ class MokaController extends Controller
             'name' => 'required|max:255',      // nameフィールドは必須チェック、255文字以内かをチェックする
             'kana' => 'required|max:255',     // titleフィールドは任意入力、入力があった時は255文字以内かをチェックする
             'kana' => ['required', new KatakanaRule],
-            'tel' => 'required',
+            'tel' => 'required | numeric | digits_between:9,11',
             'postal' => 'required',
             'prefecture' => 'required',
             'city' => 'required',
@@ -137,6 +137,8 @@ class MokaController extends Controller
             'kana.katakana'   => 'カナを入力してください。',
             'kana.max'        => 'カナは:max文字以内で入力してください。',  // titleフィールドで255文字を超えた時に表示されるエラーメッセージ
             'tel.required' => '電話番号を入力してください。',
+            'tel.numeric' => '数字のみを入力してください。',
+            'tel.digits_between' => '9〜11文字で入力してください。',
             'postal.required'      => '郵便番号を入力してください。',
             'prefecture.required'      => '都道府県を入力してください。',
             'city.required'      => '住所1を入力してください。',

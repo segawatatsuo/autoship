@@ -110,6 +110,7 @@
             background: none !important;
             padding: 0 !important;
         }
+        label{font-weight: bold;}
     </style>
     <link rel='stylesheet' id='wp-block-library-css'
         href='https://mokapresso.jp/wp-includes/css/dist/block-library/style.min.css?ver=5.5' type='text/css'
@@ -348,7 +349,7 @@
 
 
                         <div class="form-group">
-                            <label for="name">名前</label>
+                            <label for="name">お名前</label>
                             <input type="text" name="name" id="name" class="form-control"
                                 value="{{ old('name') }}">
                             @if ($errors->has('name'))
@@ -357,7 +358,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="kana">名前カナ</label>
+                            <label for="kana">お名前カナ</label>
                             <input type="text" name="kana" id="kana" class="form-control"
                                 value="{{ old('kana') }}" />
                             @if ($errors->has('kana'))
@@ -366,7 +367,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tel">電話番号</label>
+                            <label for="tel">電話番号<span style="font-size: 70%"> (ハイフンなし)</span></label>
                             <input type="text" name="tel" id="tel" class="form-control"
                                 value="{{ old('tel') }}" />
                             @if ($errors->has('tel'))
@@ -473,9 +474,9 @@
 
     </div><!-- #main -->
 
-
+<!--
     <div id="toTop" class="wrap fixed"><a href="#masthead"><i class="fa fa-chevron-circle-up"></i></a></div>
-
+-->
 
 
 

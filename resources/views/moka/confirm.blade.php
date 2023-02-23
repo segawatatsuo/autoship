@@ -314,12 +314,12 @@
                             <td>{{ $validated['email'] }}</td>
                         </tr>
                         <tr>
-                            <td>名前</td>
+                            <td>お名前</td>
                             <td>{{ $validated['name'] }}</td>
                         </tr>
 
                         <tr>
-                            <td>名前カナ</td>
+                            <td>カナ</td>
                             <td>{{ $validated['kana'] }}</td>
                         </tr>
 
@@ -370,7 +370,7 @@
 
 
                 <!--ルミーズ決済画面へ shift-jis-->
-                <form name="form1" method="post" action="https://test.remise.jp/rpgw2/pc/card/paycard.aspx" accept-charset="shift_jis">
+                <form name="form1" method="post" action="https://ssl01.remise.jp/rpgw2/pc/card/paycard.aspx" accept-charset="shift_jis">
                     @csrf
                     <input type="hidden" name="ac_count" value="">
                     <input type="hidden" name="SHOPCO" value="RMS63879">
