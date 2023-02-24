@@ -246,6 +246,7 @@ class MokaController extends Controller
                 'price' => $price
             ]);
         }
+
         // 入力チェック成功時はresources/view/moka/confirm.blade.phpに内容を表示させる
         //return viewなのでルート側の記載はなくても大丈夫
         //エラーがなければ確認画面へ移動
@@ -350,9 +351,9 @@ class MokaController extends Controller
         $content.="■お名前\n";
         $content.=$name."\n\n";
         $content.="■郵便番号\n";
-        $content.='〒'.$postal."\n";
+        $content.='〒'.$postal."\n\n";
         $content.="■ご住所\n";
-        $content.=$prefecture.$city.$street."\n";
+        $content.=$prefecture.$city.$street."\n\n";
         $content.="■お電話\n";
         $content.=$tel."\n\n";
         $content.="■2回目以降のお届け間隔\n";
@@ -364,13 +365,13 @@ class MokaController extends Controller
             $content.="\n";
         }
         $content.="■小計金額\n";
-        $content.=$subtotal."\n";
+        $content.=number_format($subtotal)."\n\n";
         $content.="■送料\n";
-        $content.=$shipping."\n";
+        $content.=number_format($shipping)."\n\n";
         $content.="■消費税\n";
-        $content.=$tax."\n";
+        $content.=number_format($tax)."\n\n";
         $content.="■合計金額\n";
-        $content.=$total."\n";
+        $content.=number_format($total)."\n\n";
 
         $content.="\n";
         $content.="第一回目の発送はご注文日の翌営業日となります。\n";
@@ -445,9 +446,10 @@ class MokaController extends Controller
         "送付先1お届け希望時間：\n".
         "■通信欄:".$interval.' '.$week.' '.$youbi."\n";
 
+        //ネクストエンジンにメールする
         $to = $email;
-        //$bcc="info@mokapresso.jp";
-        $bcc = "segawa@lookingfor.jp";
+        $to="200679de2380eab32@mail.main.next-engine.com";
+        $bcc="info@mokapresso.jp";
         $content = $nextmail;
 	    Mail::to($to)->bcc($bcc)->send(new NextengineMail($content));
 

@@ -31,7 +31,7 @@ class NextengineMail extends Mailable
     {
         return $this->from('info@dcast.jp') // 送信元
         ->subject('ネクストエンジン登録') // メールタイトル
-        ->view('emails.nextengine') // どのテンプレートを呼び出すか
+        ->text('emails.nextengine') // view(htmlメール) text(textメール)
         ->with(['content' => $this->content]); // withオプションでセットしたデータをテンプレートへ受け渡す
     }
 }
