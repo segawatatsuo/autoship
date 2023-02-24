@@ -20,5 +20,8 @@ class OrderDetail extends Model
         'item_name',
         'price',
         'amount',
+        'item_No',
+        'count',
+        'price'
     ];
 }

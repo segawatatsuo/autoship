@@ -462,13 +462,14 @@
                             <div class="itemname">数量：<input type="number" class="no-spin" name="input1"
                                     id="input1" value="{{ old('input1') }}" onKeyup="calc()"
                                     style="width:50%;height:50%"></div>
-
                         </article>
+
+
                         <article id="post-655"
                             class="post-655 post type-post status-publish format-standard category-amalfi">
 
                             <div class="itemimg">
-                                <a href="https://mokapresso.jp/?p=655"><img width="300" height="300"
+                                <a href="https://mokapresso.jp/?p=28"><img width="300" height="300"
                                         src="https://mokapresso.jp/img_new/flavor_cosimo.jpg"
                                         class="attachment-300x300 size-300x300" alt="moka-amalfi-15box"
                                         loading="lazy"
@@ -477,7 +478,7 @@
                             </div>
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
-                            <div><a href="https://mokapresso.jp/?p=655" rel="bookmark">コジモ／COSIMO　（10カプセル入り）</a></div>
+                            <div><a href="https://mokapresso.jp/?p=28" rel="bookmark">コジモ／COSIMO　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="number" class="no-spin" name="input2"
                                     value="{{ old('input2') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
@@ -487,7 +488,7 @@
                             class="post-653 post type-post status-publish format-standard category-amalfi">
 
                             <div class="itemimg">
-                                <a href="https://mokapresso.jp/?p=653"><img width="300" height="300"
+                                <a href="https://mokapresso.jp/?p=32"><img width="300" height="300"
                                         src="https://mokapresso.jp/img_new/flavor_rosso.jpg"
                                         class="attachment-300x300 size-300x300" alt="moka-amalfi-5box" loading="lazy"
                                         srcset="https://mokapresso.jp/img_new/flavor_rosso.jpg 500w, https://mokapresso.jp/img_new/flavor_rosso.jpg 800w, https://mokapresso.jp/img_new/flavor_rosso.jpg 768w, https://mokapresso.jp/img_new/flavor_rosso.jpg 1000w"
@@ -495,7 +496,7 @@
                             </div>
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
-                            <div><a href="https://mokapresso.jp/?p=653" rel="bookmark">ロッソ／ROSSO　（10カプセル入り）</a></div>
+                            <div><a href="https://mokapresso.jp/?p=32" rel="bookmark">ロッソ／ROSSO　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="number" class="no-spin" name="input3"
                                     value="{{ old('input3') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
@@ -504,7 +505,7 @@
                             class="post-654 post type-post status-publish format-standard category-amalfi">
 
                             <div class="itemimg">
-                                <a href="https://mokapresso.jp/?p=654"><img width="300" height="300"
+                                <a href="https://mokapresso.jp/?cat=75"><img width="300" height="300"
                                         src="https://mokapresso.jp/img_new/flavor_viola.jpg"
                                         class="attachment-300x300 size-300x300" alt="moka-amalfi-20box"
                                         loading="lazy"
@@ -513,7 +514,7 @@
                             </div>
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
-                            <div><a href="https://mokapresso.jp/?p=654" rel="bookmark">ヴィオラ／VIOLA　（10カプセル入り）</a></div>
+                            <div><a href="https://mokapresso.jp/?cat=75" rel="bookmark">ヴィオラ／VIOLA　（10カプセル入り）</a></div>
                             <div class="itemname">数量：<input type="number" class="no-spin" name="input4"
                                     value="{{ old('input4') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
 
@@ -523,7 +524,7 @@
                             class="post-656 post type-post status-publish format-standard category-amalfi">
 
                             <div class="itemimg">
-                                <a href="https://mokapresso.jp/?p=656"><img width="300" height="300"
+                                <a href="https://mokapresso.jp/?p=25"><img width="300" height="300"
                                         src="https://mokapresso.jp/img_new/flavor_vernazza.jpg"
                                         class="attachment-300x300 size-300x300" alt="moka-amalfi-10box"
                                         loading="lazy"
@@ -532,7 +533,7 @@
                             </div>
 
                             <div class="itemprice">¥648<em class="tax">（税込）</em></div>
-                            <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">ヴェルナッツア／VERNAZZA　（10カプセル入り）</a>
+                            <div><a href="https://mokapresso.jp/?p=25" rel="bookmark">ヴェルナッツア／VERNAZZA　（10カプセル入り）</a>
                             </div>
                             <div class="itemname">数量：<input type="number" class="no-spin" name="input5"
                                     value="{{ old('input5') }}" onKeyup="calc()" style="width:50%;height:50%"></div>
@@ -544,7 +545,7 @@
                             class="post-656 post type-post status-publish format-standard category-amalfi">
 
                             <div class="itemimg">
-                                <a href="https://mokapresso.jp/?p=650"><img width="300" height="300"
+                                <a href="https://mokapresso.jp/?p=631"><img width="300" height="300"
                                         src="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg"
                                         class="attachment-300x300 size-300x300" alt="moka-5assort-20" loading="lazy"
                                         srcset="https://mokapresso.jp/wp-content/uploads/2023/02/5assort.jpg 500w, 
@@ -556,7 +557,7 @@
 
 
                             <div class="itemprice">¥3240<em class="tax">（税込）</em></div>
-                            <div><a href="https://mokapresso.jp/?p=656" rel="bookmark">5種セット（10カプセル入り×５本）</a>
+                            <div><a href="https://mokapresso.jp/?p=631" rel="bookmark">5種セット（10カプセル入り×５本）</a>
                             </div>
                             <div class="itemname">数量：<input type="number" name="input6" class="no-spin"
                                     value="{{ old('input6') }}" onKeyup="calc()" style="width:50%;height:50%"></div>

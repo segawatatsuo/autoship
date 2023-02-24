@@ -14,6 +14,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Remise;
 use App\Mail\ThanksMail;
+use App\Mail\NextengineMail;
 use Mail;
 
 class MokaController extends Controller
@@ -87,6 +88,7 @@ class MokaController extends Controller
         session(['items' => $items]);
         session(['total_price' => $total_price]);
         session(['postage' => $postage]);
+        session(['sum' => $sum]);//合計数量
        
 
         if ($sum < 1) {
@@ -138,7 +140,7 @@ class MokaController extends Controller
             'kana.max'        => 'カナは:max文字以内で入力してください。',  // titleフィールドで255文字を超えた時に表示されるエラーメッセージ
             'tel.required' => '電話番号を入力してください。',
             'tel.numeric' => '数字のみを入力してください。',
-            'tel.digits_between' => '9〜11文字で入力してください。',
+            'tel.digits_between' => '9〜11桁で入力してください。',
             'postal.required'      => '郵便番号を入力してください。',
             'prefecture.required'      => '都道府県を入力してください。',
             'city.required'      => '住所1を入力してください。',
@@ -171,6 +173,22 @@ class MokaController extends Controller
         $tax=intval($tax);
         $total=session()->get('total_price');
         $subtotal=$total-$tax;
+        $sum=session()->get('sum');
+
+        //単価を出す
+        if($sum<5){
+            $price=600;
+        }elseif($sum<10){
+            $price=540;
+        }elseif($sum<15){
+            $price=480;
+        }elseif($sum<20){
+            $price=450;
+        }else{
+            $price=400;
+        }
+
+        //メインをDBに追加
         $order = order::create([
             'order_number' => $order_number,
             'name' => $name,
@@ -188,14 +206,44 @@ class MokaController extends Controller
             'shipping' => $shipping,
             'tax' =>$tax,
             'total' => $total,
-            'subtotal' => $subtotal
+            'sum' => $sum,
+            'subtotal' => $subtotal,
         ]);
 
+        //明細をDBに追加
         foreach ( session()->get('items') as $key => $val ){
+            //商品番号
+            //個数に変換(5種セットは5)
+            if(false !== strpos($key,'アマルフィ')){
+                $itemNo="AMALFI";
+                $count=$val;
+            }elseif(false !== strpos($key,'コジモ')){
+                $itemNo="COSIMO";
+                $count=$val;
+            }elseif(false !== strpos($key,'ロッソ')){
+                $itemNo="ROSSO";
+                $count=$val;
+            }elseif(false !== strpos($key,'ヴィオラ')){
+                $itemNo="VIOLA";
+                $count=$val;
+            }elseif(false !== strpos($key,'ヴェルナッツア')){
+                $itemNo="VERNAZZA";
+                $count=$val;
+            }elseif(false !== strpos($key,'5種セット')){
+                $itemNo="moka-5assort";
+                $count=$val*5;
+            }else{
+                $itemNo="";
+                $count="";           
+            }
+            //DBに登録する
             orderdetail::create([
                 'order_number' => $order_number,
                 'item_name' => $key,
-                'amount' => $val
+                'amount' => $val,
+                'item_number'=> $itemNo,
+                'count' => $count,
+                'price' => $price
             ]);
         }
         // 入力チェック成功時はresources/view/moka/confirm.blade.phpに内容を表示させる
@@ -277,6 +325,7 @@ class MokaController extends Controller
         $customer=Order::where( 'order_number', $id )->first();
         $email=$customer->email;
         $name=$customer->name;
+        $kana=$customer->kana;
         $tel=$customer->tel;
         $postal=$customer->postal;
         $prefecture=$customer->prefecture;
@@ -286,16 +335,18 @@ class MokaController extends Controller
         $week=$customer->week;
         $youbi=$customer->youbi;
         $message=$customer->message;
-
+        $subtotal=$customer->subtotal;//小計
+        $shipping=$customer->shipping;//送料
+        $tax=$customer->tax;//税
+        $total=$customer->total;//合計
         $detail=OrderDetail::where( 'order_number', $id )->get();
-        //foreach($detail as $d){
-            //echo $d["item_name"];
-            //echo $d["amount"];
-        //}
+
 
         //お客様にメール
         $content=$name."様\n\n定期購入のお申し込みありがとうございます。モカプレッソです。\n";
         $content.="下記の通りご注文を承りました。\n\n";
+        $content.="■ご注文番号\n";
+        $content.=$id."\n\n";
         $content.="■お名前\n";
         $content.=$name."\n\n";
         $content.="■郵便番号\n";
@@ -312,6 +363,15 @@ class MokaController extends Controller
             $content.=$d["amount"];
             $content.="\n";
         }
+        $content.="■小計金額\n";
+        $content.=$subtotal."\n";
+        $content.="■送料\n";
+        $content.=$shipping."\n";
+        $content.="■消費税\n";
+        $content.=$tax."\n";
+        $content.="■合計金額\n";
+        $content.=$total."\n";
+
         $content.="\n";
         $content.="第一回目の発送はご注文日の翌営業日となります。\n";
         $content.="ご不明な点などございましたらお気軽にお問い合わせください。\n";
@@ -327,7 +387,70 @@ class MokaController extends Controller
         $to =$email;
         $bcc="info@mokapresso.jp";
 	    Mail::to($to)->bcc($bcc)->send(new ThanksMail($content));
-        
+
+        //ネクストエンジンにメール
+        $nextmail=
+        "注文コード：".$id."\n".
+        "注文日時：".date('Y年m月d日 H時i分s秒')."\n".
+        "■注文者の情報\n".
+        "氏名：".$name."\n".
+        "氏名（フリガナ）：".$kana."\n".
+        "郵便番号：".$postal."\n".
+        "住所：".$prefecture.$street.$city."\n".
+        "電話番号：".$tel."\n".
+        "Ｅメールアドレス：".$email."\n".
+        "■支払方法\n".
+        "支払方法："."クレジットカード"."\n".
+        "■注文内容\n".
+        "------------------------------------------------------------\n";
+
+        foreach($detail as $d){
+            $itemName=$d["item_name"];
+            $count=$d["count"];
+            $amount=$d["amount"];
+            $tanka=$d['price'];
+            if($d['item_name']=="moka-5assort"){
+                $tanka=$tanka*5;
+            }
+
+            $nextmail.="商品番号：\n".
+            "注文商品名：".$itemName."\n".
+            "商品オプション："."\n".
+            "単価：￥".number_format($tanka)."\n".
+            "数量：".$amount."\n".
+            "小計：￥".number_format($amount*$tanka)."\n".
+            "------------------------------------------------------------\n";
+
+        }
+
+        $nextmail.="商品合計：￥".number_format($subtotal)."\n".
+        "税金：".number_format($tax)."\n".
+        "送料：".number_format($shipping)."\n".
+        "手数料："."\n".
+        "その他費用："."\n".
+        "ポイント利用額："."\n".
+        "------------------------------------------------------------\n".
+        "合計金額(税込)：￥".number_format($total)."\n".
+        "------------------------------------------------------------\n".
+        "■届け先の情報"."\n".
+        "[送付先1]"."\n".
+        "送付先1氏名：".$name."\n".
+        "送付先1氏名（フリガナ）：".$kana."\n".
+        "送付先1郵便番号：".$postal."\n".
+        "送付先1住所：".$prefecture.$street.$city."\n".
+        "送付先1電話番号：".$tel."\n".
+        "送付先1のし・ギフト包装：\n".
+        "送付先1お届け方法：宅配便\n".
+        "送付先1お届け希望日：\n".
+        "送付先1お届け希望時間：\n".
+        "■通信欄:".$interval.' '.$week.' '.$youbi."\n";
+
+        $to = $email;
+        //$bcc="info@mokapresso.jp";
+        $bcc = "segawa@lookingfor.jp";
+        $content = $nextmail;
+	    Mail::to($to)->bcc($bcc)->send(new NextengineMail($content));
+
         return view('moka.thanks',compact('name'));
     }
     //ルミーズからNGが返ってきた場合

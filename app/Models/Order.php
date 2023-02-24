@@ -32,5 +32,6 @@ class Order extends Model
         'shipping',
         'tax',
         'total',
+        'sum'
     ];
 }
