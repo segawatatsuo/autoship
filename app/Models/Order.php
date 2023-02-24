@@ -32,6 +32,7 @@ class Order extends Model
         'shipping',
         'tax',
         'total',
-        'sum'
+        'sum',
+        'confirmed_order'
     ];
 }

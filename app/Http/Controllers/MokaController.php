@@ -358,20 +358,24 @@ class MokaController extends Controller
         $content.=$tel."\n\n";
         $content.="■2回目以降のお届け間隔\n";
         $content.=$interval.' '.$week.' '.$youbi."\n\n";
+        $content.="■メッセージ\n";
+        $content.=$message."\n\n";
+
         $content.="■お届け商品\n";
         foreach($detail as $d){
             $content.=$d["item_name"]." × ";
             $content.=$d["amount"];
             $content.="\n";
         }
-        $content.="■小計金額\n";
-        $content.=number_format($subtotal)."\n\n";
-        $content.="■送料\n";
-        $content.=number_format($shipping)."\n\n";
-        $content.="■消費税\n";
-        $content.=number_format($tax)."\n\n";
-        $content.="■合計金額\n";
-        $content.=number_format($total)."\n\n";
+        "--------------------------\n";
+        $content.="小計金額：";
+        $content.=number_format($subtotal-$shipping)."円\n";
+        $content.="送料：";
+        $content.=number_format($shipping)."円\n";
+        $content.="消費税：";
+        $content.=number_format($tax)."円\n";
+        $content.="合計金額：";
+        $content.=number_format($total)."円\n\n";
 
         $content.="\n";
         $content.="第一回目の発送はご注文日の翌営業日となります。\n";
@@ -444,7 +448,7 @@ class MokaController extends Controller
         "送付先1お届け方法：宅配便\n".
         "送付先1お届け希望日：\n".
         "送付先1お届け希望時間：\n".
-        "■通信欄:".$interval.' '.$week.' '.$youbi."\n";
+        "■通信欄:".$interval.' '.$week.' '.$youbi.' '.$message."\n";
 
         //ネクストエンジンにメールする
         $to = $email;
@@ -452,6 +456,11 @@ class MokaController extends Controller
         $bcc="info@mokapresso.jp";
         $content = $nextmail;
 	    Mail::to($to)->bcc($bcc)->send(new NextengineMail($content));
+
+        //注文確定フラグに1を立てる
+        $customer=Order::where( 'order_number', $id )->first();
+        $customer->confirmed_order="1";
+        $customer->save();
 
         return view('moka.thanks',compact('name'));
     }
